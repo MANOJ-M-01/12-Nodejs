@@ -3,11 +3,11 @@ import mysql from "mysql";
 import fs from "fs";
 const port = 3001;
 var con = mysql.createConnection({
-    host: "localhost",
-    port: 3308,
-    user: "root",
-    password: "",
-    database: "vuedb",
+    host: "bxmnjq7g3jmdncvfvrug-mysql.services.clever-cloud.com",
+    port: 3306,
+    user: "uthurew6k35kobkl",
+    password: "JhzCd3kSxMz0RjleScdC",
+    database: "bxmnjq7g3jmdncvfvrug",
 });
 const app = Express();
 
