@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+  <style>
+    #person{
+      display: inline-flex;
+      width: 100%;
+    }
+    .child{
+      flex:1 1  1;
+      width: fit-content;
+      color:red;
+      font-family:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+      font-weight: bold;
+      margin-bottom: -15px;
+    }
+    span{
+      color:crimson;
+      font-weight:lighter;
+    }
+    @media only screen and (max-width: 680px) {
+      .child{
+        color:blue !important;
+      }
+      span{
+        font-size: 10px;
+      }
+      
+    }
+
+  </style>
+  </head>
+  <div id="person">
+<div  class="child">Id &nbsp;  <span id="id"></span></div><br/>
+<div  class="child">Name  &nbsp;<span id="name"></span></div><br/>&nbsp;&nbsp;
+<div  class="child">Email &nbsp; <span id="email"></span></div><br/>&nbsp;&nbsp;
+<div  class="child">City &nbsp;<span id="city"></span></div><br/>&nbsp;&nbsp;
+<div  class="child">Country  &nbsp;<span id="country"></span></div><br/>&nbsp;&nbsp;
+<div  class="child">Job &nbsp;<span id="job"></span></div><br/>&nbsp;&nbsp;
+</div>
+
+  <body></body>
+  <script>
+    function data() {
+      axios({
+        method: "get",
+        url: "http://localhost:3001/View",
+      })
+        .then((res) => {
+         // console.log(res);
+          var len=res.data.length;
+         // console.log(res.data);
+          var dt=res.data;
+
+            let data = dt.map(data => {
+              console.log(data.id);
+              console.log(data.name); 
+              console.log(data.email); 
+              console.log(data.city); 
+              console.log(data.country);
+              console.log(data.job);
+              document.getElementById('id').innerHTML=document.getElementById('id').innerHTML+"<br/>"+data.id;
+              document.getElementById('name').innerHTML=document.getElementById('name').innerHTML+"<br/>"+data.name;
+              document.getElementById('email').innerHTML=document.getElementById('email').innerHTML+"<br/>"+data.email;
+              document.getElementById('city').innerHTML=document.getElementById('city').innerHTML+"<br/>"+data.city;
+              document.getElementById('country').innerHTML=document.getElementById('country').innerHTML+"<br/>"+data.country;
+              document.getElementById('job').innerHTML=document.getElementById('job').innerHTML+"<br/>"+data.job;
+            return data.id;
+            });
+           // console.log(data);
+
+            /*
+            const map1 = dt.map(dt => dt.id);
+            console.log(map1);
+            */
+          
+        })
+        .catch((err) => console.error(err));
+    }
+    data();
+
+  </script>
+</html>
